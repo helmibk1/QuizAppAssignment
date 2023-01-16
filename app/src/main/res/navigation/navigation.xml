@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_root"
+    app:startDestination="@+id/titleFragment">
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.quizappassignment.TitleFragment"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.quizappassignment.QuizFragment"
+        tools:layout="@layout/fragment_quiz">
+        <action
+            android:id="@+id/action_gameFragment_to_gameWonFragment"
+            app:destination="@id/gameWonFragment"
+            app:popUpTo="@+id/gameFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_gameFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameWonFragment"
+        android:name="com.example.quizappassignment.ResultFragment"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_gameWonFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:popUpTo="@+id/titleFragment"/>
+        <argument
+            android:name="correct_answers"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gameWonFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <argument android:name="answers"
+            app:argType="integer[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.quizappassignment.AnswersAnalysisFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_answer_analysis" >
+        <argument android:name="answers_list"
+            app:argType="integer[]" />
+    </fragment>
+
+</navigation>
