@@ -74,5 +74,6 @@ class QuizFragment : Fragment() {
         currentQuestion = questions[questionIndex]
         currentQuestion.index = (questionIndex+1).toString() + ") "
         answers = currentQuestion.answers.toMutableList()
+        answers.shuffle()
     }
 }
